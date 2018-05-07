@@ -5,29 +5,51 @@ import Map from "./MyMapComponent";
 class ViewMap extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      lat: "",
-      lng: "",
       success: false
     };
 
     this.handleSuccess = this.handleSuccess.bind(this);
   }
 
-  handleSuccess() {
+  /*
+  geocodeLatLng(geocoder, map, infowindow) {
+    var latlngStr = input.split(",", 2);
+    var latlng = {
+      lat: parseFloat(latlngStr[0]),
+      lng: parseFloat(latlngStr[1])
+    };
+    geocoder.geocode({ location: latlng }, function(results, status) {
+      if (status === "OK") {
+        if (results[1]) {
+          infowindow.setContent(results[1].formatted_address);
+          infowindow.open(map, marker);
+        } else {
+          window.alert("No results found");
+        }
+      } else {
+        window.alert("Geocoder failed due to: " + status);
+      }
+    });
+  }*/
+
+  handleSuccess(success) {
+    // const geocoder = new google.maps.Geocoder();
+    //const infowindow = new google.maps.InfoWindow();
+    //console.log("handleSuccess");
     this.setState({
-      lat: this.latitude,
-      success: !this.state.success
+      success
     });
   }
 
   render() {
+    //console.log(this.state.success);
     const { error, success } = this.state;
 
     if (error) {
       return <h1>{error}</h1>;
     }
+
     return (
       <Geolocation
         lazy
@@ -45,9 +67,7 @@ class ViewMap extends Component {
               {error && <div>{error.message}</div>}
               {success && (
                 <div>
-                  <Map lat={latitude} lng={longitude} />
-                  latitud= {latitude}
-                  longitud={longitude}
+                  <Map lat={latitude} lng={longitude} isMarkerShown />
                 </div>
               )}
             </div>

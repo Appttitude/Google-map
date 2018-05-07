@@ -15,6 +15,7 @@ const MyMapComponent = compose(
      * https://console.developers.google.com/apis/dashboard
      * The key "AIzaSyBkNaAGLEVq0YLQMi-PYEMabFeREadYe1Q" can be ONLY used in this sandbox (no forked).
      */
+
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyCBjKHxpTGLEg3F5cCP95xwJyxxTZAvtTo&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
@@ -31,7 +32,6 @@ const MyMapComponent = compose(
     {props.isMarkerShown && (
       <Marker position={{ lat: props.lat, lng: props.lng }} />
     )}
-    {console.log(props)}
   </GoogleMap>
 ));
 
