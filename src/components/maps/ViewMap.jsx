@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Geolocation from "react-geolocation";
+import Map from "./MyMapComponent";
 
 class ViewMap extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class ViewMap extends Component {
 
   render() {
     const { error, success } = this.state;
+
     if (error) {
       return <h1>{error}</h1>;
     }
@@ -40,6 +42,8 @@ class ViewMap extends Component {
               {error && <div>{error.message}</div>}
               {success && (
                 <div>
+                  <Map lat={latitude} lng={longitude} />
+                  {/*console.log(this.onSuccess)*/}
                   latitud= {latitude}
                   longitud={longitude}
                 </div>

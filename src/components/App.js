@@ -3,7 +3,11 @@ import Location from "./maps/ViewMap";
 
 class App extends Component {
   render() {
-    return <Location />;
+    return (
+      <div>
+        <Location />
+      </div>
+    );
   }
 }
 
