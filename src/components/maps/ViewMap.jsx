@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Geolocation from "react-geolocation";
 import Map from "./MyMapComponent";
+import img from "./loading-map.gif";
 
 class ViewMap extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ class ViewMap extends Component {
           error,
           getCurrentPosition
         }) => {
-          if (fetchingPosition) return <h1>FETCHING POSITION</h1>;
+          if (fetchingPosition) return <img src={img} alt={"img"} />;
           return (
             <div>
               <button onClick={getCurrentPosition}>Get Position</button>
