@@ -16,7 +16,10 @@ class ViewMap extends Component {
   }
 
   handleSuccess() {
-    this.setState({ success: !this.state.success });
+    this.setState({
+      lat: this.latitude,
+      success: !this.state.success
+    });
   }
 
   render() {
@@ -43,7 +46,6 @@ class ViewMap extends Component {
               {success && (
                 <div>
                   <Map lat={latitude} lng={longitude} />
-                  {/*console.log(this.onSuccess)*/}
                   latitud= {latitude}
                   longitud={longitude}
                 </div>
