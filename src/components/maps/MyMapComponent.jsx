@@ -10,12 +10,6 @@ import PropTypes from "prop-types";
 
 const MyMapComponent = compose(
   withProps({
-    /**
-     * Note: create and replace your own key in the Google console.
-     * https://console.developers.google.com/apis/dashboard
-     * The key "AIzaSyBkNaAGLEVq0YLQMi-PYEMabFeREadYe1Q" can be ONLY used in this sandbox (no forked).
-     */
-
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyCBjKHxpTGLEg3F5cCP95xwJyxxTZAvtTo&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
@@ -30,7 +24,13 @@ const MyMapComponent = compose(
     defaultCenter={{ lat: props.lat, lng: props.lng }}
   >
     {props.isMarkerShown && (
-      <Marker position={{ lat: props.lat, lng: props.lng }} />
+      <Marker
+        position={{
+          lat:
+            typeof props.lat === "number" ? props.lat : parseFloat(props.lat),
+          lng: typeof props.lng === "number" ? props.lng : parseFloat(props.lng)
+        }}
+      />
     )}
   </GoogleMap>
 ));
