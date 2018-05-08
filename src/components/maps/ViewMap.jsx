@@ -29,7 +29,7 @@ class ViewMap extends Component {
     //const lat = this.state.latitude;
     //debugger;
     //console.log(nextState.country);
-    console.log(nextState);
+    //console.log(nextState);
     // console.log(typeof nextState.latitude);
     return nextState.country !== this.state.country;
   }
@@ -63,6 +63,7 @@ class ViewMap extends Component {
       .catch(error => {
         this.setState({ error });
       });
+    console.log(position);
   }
 
   renderMap({
@@ -71,7 +72,6 @@ class ViewMap extends Component {
     error,
     getCurrentPosition
   }) {
-    console.log(latitude);
     const { fullCity, country } = this.state;
     if (error) {
       return <h1>{error}</h1>;
